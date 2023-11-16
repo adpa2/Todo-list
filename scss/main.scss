@@ -11,6 +11,7 @@ $purpleDark: #5E60CE;
 $blue: #4EA8DE;
 $blueDark: #1E6F9F;
 $danger: #E25858;
+$white: #FFFFFF;
 
 //fonts
 //$primaryFonts:  ;
@@ -25,20 +26,27 @@ $bold: 600;
   box-sizing: border-box;
 }
 
+body{
+  font-family: sans-serif;
+}
+
 .search {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  height: 20vh;
+  height: 100%;
   background: $gray7;
+  padding: 50px 0;
   row-gap: 30px;
 
 
   &__text {
     display: flex;
-    column-gap: 5px;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
   }
 }
 
@@ -53,10 +61,12 @@ button {
   font-weight: $bold;
   font-size: 14px;
   cursor: pointer;
+  &:hover {
+    opacity: 0.9;
+  }
 }
 
 input {
-
   width: 100%;
   height: 54px;
   min-width: 300px;
@@ -66,4 +76,112 @@ input {
   border: 1px $gray7;
   padding: 0 15px;
   font-size: 16px;
+}
+
+.toDoList {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  padding: 100px;
+  background-color: $gray4;
+
+  &__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+
+    h3{
+      font-weight: $bold;
+      color: $blue;
+      font-size: 14px;
+    }
+  }
+
+  &__number {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: $gray5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+      color: $white;
+      font-weight: $bold;
+      font-size: 14px;
+    }
+  }
+
+
+  &__line{
+    position: relative;
+    width: 100%;
+
+    span {
+      position: absolute;
+      width: 100%;
+      margin: 25px 0;
+      height: 10px;
+      top: 0;
+      left: 0;
+      border: 2px dotted #555;
+      border-bottom: 0;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+  }
+
+  &__tasks{
+    position: relative;
+    padding: 100px 0;
+
+    &_holder{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 20px;
+
+      p{
+        font-size: 16px;
+        color: $gray3;
+        text-align: center;
+      }
+    }
+
+    ul {
+      list-style: none;
+      li {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        column-gap: 10%;
+        padding: 16px;
+        margin-bottom: 12px;
+        background-color: $gray5;
+        border-radius: 8px;
+
+        img{
+          cursor: pointer;
+        }
+
+        h4 {
+          color: $white;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .search {
+    &__text {
+      flex-direction: column;
+      gap: 15px;
+    }
+  }
 }
