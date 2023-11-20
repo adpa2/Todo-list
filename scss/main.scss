@@ -13,12 +13,16 @@ $blueDark: #1E6F9F;
 $danger: #E25858;
 $white: #FFFFFF;
 
-//fonts
-//$primaryFonts:  ;
-
 //fontWeight
 $regular: 200;
 $bold: 600;
+
+//mixins
+@mixin flex-properties($flex: flex, $justify-content: center, $align-items:center) {
+  display: $flex;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
 
 * {
   margin: 0;
@@ -26,26 +30,25 @@ $bold: 600;
   box-sizing: border-box;
 }
 
+*:focus {
+  outline: none;
+}
+
 body{
   font-family: sans-serif;
 }
 
 .search {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-properties;
   flex-direction: column;
+  row-gap: 30px;
   width: 100%;
   height: 100%;
-  background: $gray7;
   padding: 50px 0;
-  row-gap: 30px;
-
+  background: $gray7;
 
   &__text {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-properties;
     gap: 5px;
   }
 }
@@ -70,52 +73,45 @@ input {
   width: 100%;
   height: 54px;
   min-width: 300px;
+  padding: 0 15px;
   border-radius: 8px;
   color: $gray3;
   background-color: $gray5;
   border: 1px $gray7;
-  padding: 0 15px;
   font-size: 16px;
 }
 
 .toDoList {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  @include flex-properties(flex, flex-start, center);
   flex-direction: column;
-  height: 100%;
-  padding: 100px;
+  height: 1000px;
+  padding: 100px 50px;
   background-color: $gray4;
 
   &__header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-properties;
     column-gap: 10px;
 
     h3{
+      font-size: 16px;
       font-weight: $bold;
       color: $blue;
-      font-size: 14px;
     }
   }
 
   &__number {
+    @include flex-properties;
     width: 25px;
     height: 25px;
     border-radius: 50%;
     background: $gray5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     span {
       color: $white;
       font-weight: $bold;
-      font-size: 14px;
+      font-size: 16px;
     }
   }
-
 
   &__line{
     position: relative;
@@ -137,33 +133,33 @@ input {
 
   &__tasks{
     position: relative;
-    padding: 100px 0;
+    width: 100%;
+    padding: 75px 0;
 
     &_holder{
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @include flex-properties;
       flex-direction: column;
       gap: 20px;
 
       p{
-        font-size: 16px;
-        color: $gray3;
+        font-size: 20px;
         text-align: center;
+        color: $gray3;
       }
     }
 
     ul {
+      width: 100%;
       list-style: none;
+
       li {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        column-gap: 10%;
-        padding: 16px;
-        margin-bottom: 12px;
-        background-color: $gray5;
+        @include flex-properties(flex, space-between, center);
+        column-gap: 20px;
+        width: 80%;
+        margin: 20px auto;
+        padding: 20px 30px;
         border-radius: 8px;
+        background-color: $gray5;
 
         img{
           cursor: pointer;
@@ -171,6 +167,7 @@ input {
 
         h4 {
           color: $white;
+          word-wrap: anywhere;
         }
       }
     }
