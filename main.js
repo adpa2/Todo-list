@@ -1,3 +1,5 @@
+// Here i'm start coding js
+
 const input = document.querySelector("input");
 const button = document.querySelector("button");
 const numberOfTasks = document.querySelector(".toDoList__number span");
